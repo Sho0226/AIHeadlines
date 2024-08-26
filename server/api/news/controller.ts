@@ -1,10 +1,11 @@
+import type { newsProps } from 'common/types/news';
 import { fetchTopHeadslines } from 'domain/news/event/newsEvent';
 import { defineController } from './$relay';
 
 export default defineController(() => ({
   post: async ({ body }) => {
     try {
-      const responceNews = await fetchTopHeadslines(body.query);
+      const responceNews: newsProps = await fetchTopHeadslines(body.query);
       return {
         status: 200,
         body: { response: responceNews },

@@ -107,7 +107,138 @@
                   "type": "object",
                   "properties": {
                     "response": {
-                      "type": "string"
+                      "type": "object",
+                      "properties": {
+                        "articles": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "author": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "publishedAt": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "urlToImage": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "author",
+                              "publishedAt",
+                              "title",
+                              "url",
+                              "urlToImage"
+                            ]
+                          }
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "weatherNews": {
+                          "type": "object",
+                          "properties": {
+                            "current": {
+                              "type": "object",
+                              "properties": {
+                                "temp": {
+                                  "type": "number"
+                                },
+                                "clouds": {
+                                  "type": "number"
+                                },
+                                "weather": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "main": {
+                                        "type": "string"
+                                      },
+                                      "icon": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "icon",
+                                      "main"
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "clouds",
+                                "temp",
+                                "weather"
+                              ]
+                            },
+                            "daily": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "dt": {
+                                    "type": "number"
+                                  },
+                                  "clouds": {
+                                    "type": "number"
+                                  },
+                                  "temp": {
+                                    "type": "object",
+                                    "properties": {
+                                      "min": {
+                                        "type": "number"
+                                      },
+                                      "max": {
+                                        "type": "number"
+                                      }
+                                    },
+                                    "required": [
+                                      "max",
+                                      "min"
+                                    ]
+                                  },
+                                  "weather": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "number"
+                                        },
+                                        "icon": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "icon",
+                                        "id"
+                                      ]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "clouds",
+                                  "dt",
+                                  "temp",
+                                  "weather"
+                                ]
+                              }
+                            }
+                          },
+                          "required": [
+                            "current",
+                            "daily"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
