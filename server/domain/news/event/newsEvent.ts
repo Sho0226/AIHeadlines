@@ -1,7 +1,7 @@
-import type { newsProps } from 'common/types/news';
+import type { Article } from 'common/types/news';
 import { NEWS_KEY } from 'service/envValues';
 
-export async function fetchTopHeadslines(query: string): Promise<newsProps> {
+export async function fetchTopHeadslines(query: string): Promise<Article[]> {
   try {
     const pageSize = 5;
     const response = await fetch(
