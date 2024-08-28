@@ -1,12 +1,12 @@
 import type { Article } from 'common/types/news';
 import { NEWS_KEY } from 'service/envValues';
 
-export async function fetchTopHeadlines(query: string = 'technology'): Promise<Article[]> {
+export async function fetchTopHeadlines(query: string): Promise<Article[]> {
   try {
-    const pageSize = 5;
+    const pageSize = 3;
     console.log('Fetching news with query:', query);
     const response = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=jp&pageSize=${pageSize}&apiKey=${NEWS_KEY}&q=${encodeURIComponent(query)}`,
+      `https://newsapi.org/v2/top-headlines?country=jp&pageSize=${pageSize}&apiKey=${NEWS_KEY}&category=${encodeURIComponent(query)}`,
     );
 
     console.log('Response status:', response.status);
