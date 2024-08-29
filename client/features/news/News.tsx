@@ -38,6 +38,8 @@ export const NewsComponent = () => {
         {news.map((article, index) => (
           <li key={index} className={styles.newsItem}>
             <p className={styles.newsAuthor}>{article.author}</p>
+            <p className={styles.newsAuthor}>{article.title}</p>
+            <p className={styles.newsAuthor}>{article.publishedAt}</p>
             <a
               href={article.url}
               target="_blank"
