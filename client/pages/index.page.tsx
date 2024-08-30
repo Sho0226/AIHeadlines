@@ -10,7 +10,7 @@ const Home = () => {
           <ChatComponent />
           {/* <NewsComponent /> */}
           <div className={styles.image}>
-            <img src="/images/agree.png"></img>
+            <img src="/images/agree.png" style={{ height: '40vh' }} />
           </div>
         </div>
       )}
