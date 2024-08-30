@@ -1,4 +1,4 @@
-export const APP_NAME = 'Chat AI';
+export const APP_NAME = 'AIHeadlines';
 
 export const BRANDED_ID_NAMES = ['user', 'task'] as const;
 
