@@ -42,7 +42,7 @@
   font-weight: bold;
   color: white;
   cursor: pointer;
-  background-color: #3b82f6;
+  background-color: #aaa;
   border: none;
   border-radius: 6px;
   transition:
@@ -51,7 +51,7 @@
 }
 
 .button:hover {
-  background-color: #2563eb;
+  background-color: #aaabbb;
   transform: translateY(-2px);
 }
 
