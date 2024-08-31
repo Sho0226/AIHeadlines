@@ -16,8 +16,6 @@ export async function streamChatCompletion(question: string): Promise<string> {
       frequency_penalty: 0.5,
     });
 
-    console.log('Stream started');
-
     for await (const chunk of stream) {
       console.log('Received chunk:', chunk);
       responseText += chunk.choices[0]?.delta?.content || '';
