@@ -1,12 +1,12 @@
-import type { Article } from 'common/types/news'; // Article 型をインポート
+import type { Article } from 'common/types/news';
 import { useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
 import styles from './news.module.css';
 
 export const NewsComponent = () => {
-  const [news, setNews] = useState<Article[]>([]); // 初期値を空の Article 配列に設定
+  const [news, setNews] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null); // エラーは文字列か null
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchNews = async () => {
