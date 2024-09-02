@@ -76,6 +76,7 @@ export const ChatComponent = () => {
         >
           Reset
         </button>
+        <div className={styles.thinkingcircle} />
       </div>
     </div>
   );

@@ -13,11 +13,6 @@
   overflow: hidden;
   background-color: #f0f0f0;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
-}
-
-.chatContainer:hover {
-  box-shadow: 0 8px 30px rgb(0 0 0 / 20%);
 }
 
 .input {
@@ -77,4 +72,12 @@
   word-wrap: break-word;
   background-color: #f5f5f5;
   border-radius: 4px;
+}
+
+.thinkingcircle {
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  border: 2px solid #1f2937;
+  border-radius: 50%;
 }
