@@ -64,7 +64,7 @@ export const ChatComponent = () => {
           onClick={handleAskQuestion}
           disabled={isLoading || question.trim() === ''}
         >
-          {isLoading ? 'Sending...' : 'Send'}
+          {isLoading ? '考え中...' : 'これにする'}
         </button>
         <button
           className={styles.button}
@@ -74,7 +74,7 @@ export const ChatComponent = () => {
           }}
           disabled={isLoading}
         >
-          Reset
+          考え直す
         </button>
         <div className={styles.thinkingcircle} />
       </div>
