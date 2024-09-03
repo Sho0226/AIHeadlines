@@ -47,36 +47,36 @@ export const ChatComponent = () => {
   return (
     <div className={styles.chatWrapper}>
       <div className={styles.chatContainer}>
-        <div>
-          <h3 className={styles.responseTitle}>Response:</h3>
-          <p className={styles.responseText}>{response}</p>
+        <div className={styles.thinkingCircle}>
+          <div className={styles.responseText}>{response}</div>
+          <input
+            className={styles.input}
+            type="text"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            placeholder="Ask a question"
+            disabled={isLoading}
+          />
+          <button
+            className={styles.button}
+            onClick={handleAskQuestion}
+            disabled={isLoading || question.trim() === ''}
+          >
+            {isLoading ? '考え中...' : 'これにする'}
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => {
+              setQuestion('');
+              setResponse('');
+            }}
+            disabled={isLoading}
+          >
+            考え直す
+          </button>
         </div>
-        <input
-          className={styles.input}
-          type="text"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          placeholder="Ask a question"
-          disabled={isLoading}
-        />
-        <button
-          className={styles.button}
-          onClick={handleAskQuestion}
-          disabled={isLoading || question.trim() === ''}
-        >
-          {isLoading ? '考え中...' : 'これにする'}
-        </button>
-        <button
-          className={styles.button}
-          onClick={() => {
-            setQuestion('');
-            setResponse('');
-          }}
-          disabled={isLoading}
-        >
-          考え直す
-        </button>
-        <div className={styles.thinkingcircle} />
+        <div className={styles.thinkingBigCircle} />
+        <div className={styles.thinkingSmallCircle} />
       </div>
     </div>
   );
