@@ -4,7 +4,7 @@ import styles from './chat.module.css';
 
 export const ChatComponent = () => {
   const [question, setQuestion] = useState('');
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState('どんなニュースが読みたい？');
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchInitialMessage = async () => {
