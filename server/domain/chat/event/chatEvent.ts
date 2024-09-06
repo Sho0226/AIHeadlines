@@ -4,12 +4,10 @@ export async function streamChatCompletion(question: string): Promise<string> {
   let responseText = '';
 
   try {
-    // 初回の質問を設定
     if (!question) {
       return 'どんなニュースが読みたい？';
     }
 
-    // ユーザーの質問に対してキーワードを提案
     const stream = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
