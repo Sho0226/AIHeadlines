@@ -61,9 +61,16 @@ export const ChatComponent = () => {
     <div className={styles.chatWrapper}>
       <div className={styles.chatContainer}>
         {isAnswered ? (
-          <div className={styles.chatContainer}>
+          <div className={styles.keywordContainer}>
             <div className={styles.thinkingCircle}>
               <div className={styles.responseText}>{keywords[0]}</div>
+              <button
+                className={styles.button}
+                onClick={handleAskQuestion}
+                disabled={isLoading || question.trim() === ''}
+              >
+                {isLoading ? '考え中...' : 'これにする'}
+              </button>
               <button
                 className={styles.button}
                 onClick={() => {
@@ -79,6 +86,13 @@ export const ChatComponent = () => {
               <div className={styles.responseText}>{keywords[1]}</div>
               <button
                 className={styles.button}
+                onClick={handleAskQuestion}
+                disabled={isLoading || question.trim() === ''}
+              >
+                {isLoading ? '考え中...' : 'これにする'}
+              </button>
+              <button
+                className={styles.button}
                 onClick={() => {
                   setQuestion('');
                   fetchInitialMessage();
@@ -90,6 +104,14 @@ export const ChatComponent = () => {
             </div>
             <div className={styles.thinkingCircle}>
               <div className={styles.responseText}>{keywords[2]}</div>
+              <button
+                className={styles.button}
+                onClick={handleAskQuestion}
+                disabled={isLoading || question.trim() === ''}
+              >
+                {isLoading ? '考え中...' : 'これにする'}
+              </button>
+
               <button
                 className={styles.button}
                 onClick={() => {
