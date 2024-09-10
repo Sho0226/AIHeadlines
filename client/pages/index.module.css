@@ -1,4 +1,6 @@
 .container {
+  display: flex;
+  justify-content: center;
   min-height: 100vh;
   padding: 40px 16px;
   background: #f8f8f8;
@@ -28,10 +30,4 @@
   background-clip: text;
   background-size: 200% 200%;
   animation: gradient 10s ease infinite;
-}
-
-.image {
-  text-align: center;
-  pointer-events: none;
-  user-select: none;
 }

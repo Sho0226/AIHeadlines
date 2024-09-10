@@ -1,5 +1,5 @@
 .chatWrapper {
-  display: flex;
+  display: inline-table;
   align-items: center;
   justify-content: center;
   background-color: #f8f8f8;
@@ -97,4 +97,10 @@
   margin: 3% auto;
   border: 3.5px solid #1f2937;
   border-radius: 50%;
+}
+
+.image {
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
 }

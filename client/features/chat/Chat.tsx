@@ -8,6 +8,7 @@ export const ChatComponent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAnswered, setIsAnswered] = useState(false); // 回答済みかどうかの状態
   const [keywords, setKeywords] = useState<string[]>([]); // 抽出したキーワードを保持するステート
+  const [toggleState, setToggleState] = useState(0);
 
   const fetchInitialMessage = async () => {
     setIsLoading(true);
@@ -22,6 +23,7 @@ export const ChatComponent = () => {
     } finally {
       setIsLoading(false);
       setIsAnswered(false); // 回答済みをリセット
+      setToggleState(0); // 画像を初期化
     }
   };
 
@@ -37,7 +39,6 @@ export const ChatComponent = () => {
       });
       setResponse(res.response || 'No response received.');
 
-      // res.responseを直接処理してキーワードを抽出
       const extractedKeywords = res.response
         .split('-') // ハイフンで分割
         .map((item: string) => item.trim()) // 各項目の前後の空白を除去
@@ -45,6 +46,7 @@ export const ChatComponent = () => {
 
       setKeywords(extractedKeywords); // キーワードをステートに保存
       setIsAnswered(true); // 回答済みにする
+      setToggleState(2); // 画像を"amaze"に変更
     } catch (error) {
       console.error('Error:', error);
       setResponse('An error occurred. Please try again.');
@@ -53,7 +55,6 @@ export const ChatComponent = () => {
     }
   };
 
-  // 共通のボタン処理
   const renderButtons = () => (
     <>
       <button
@@ -68,6 +69,7 @@ export const ChatComponent = () => {
         onClick={() => {
           setQuestion('');
           fetchInitialMessage();
+          setToggleState(1); // 状況に応じて"think"の画像に設定
         }}
         disabled={isLoading}
       >
@@ -76,12 +78,24 @@ export const ChatComponent = () => {
     </>
   );
 
+  const getImageName = () => {
+    switch (toggleState) {
+      case 0:
+        return 'agree';
+      case 1:
+        return 'think';
+      case 2:
+        return 'amaze';
+      default:
+        return 'agree'; // デフォルト画像を指定
+    }
+  };
+
   return (
     <div className={styles.chatWrapper}>
       <div className={styles.chatContainer}>
         {isAnswered ? (
           <div className={styles.keywordContainer}>
-            {/* キーワードを動的に生成 */}
             {keywords.map((keyword, index) => (
               <div className={styles.thinkingCircle} key={index}>
                 <div className={styles.responseText}>{keyword}</div>
@@ -90,7 +104,6 @@ export const ChatComponent = () => {
             ))}
           </div>
         ) : (
-          /* 通常の表示内容 */
           <div className={styles.thinkingCircle}>
             <div className={styles.responseText}>{response}</div>
             <input
@@ -106,6 +119,9 @@ export const ChatComponent = () => {
         )}
         <div className={styles.thinkingBigCircle} />
         <div className={styles.thinkingSmallCircle} />
+      </div>
+      <div className={styles.image}>
+        <img src={`/images/${getImageName()}.png`} style={{ height: '40vh' }} />
       </div>
     </div>
   );
