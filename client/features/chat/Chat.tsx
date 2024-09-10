@@ -15,7 +15,6 @@ export const ChatComponent = () => {
       const res = await apiClient.chat.$post({
         body: { question: '' },
       });
-      console.log('Received initial response from API:', res.response);
       setResponse(res.response || 'No response received.');
     } catch (error) {
       console.error('Error fetching initial message:', error);
@@ -36,7 +35,6 @@ export const ChatComponent = () => {
       const res = await apiClient.chat.$post({
         body: { question },
       });
-      console.log('Received response from API:', res.response);
       setResponse(res.response || 'No response received.');
 
       // res.responseを直接処理してキーワードを抽出
@@ -46,8 +44,6 @@ export const ChatComponent = () => {
         .filter((item: string) => item !== ''); // 空白行を除外
 
       setKeywords(extractedKeywords); // キーワードをステートに保存
-      console.log('Extracted Keywords:', extractedKeywords);
-
       setIsAnswered(true); // 回答済みにする
     } catch (error) {
       console.error('Error:', error);
@@ -57,72 +53,41 @@ export const ChatComponent = () => {
     }
   };
 
+  // 共通のボタン処理
+  const renderButtons = () => (
+    <>
+      <button
+        className={styles.button}
+        onClick={handleAskQuestion}
+        disabled={isLoading || question.trim() === ''}
+      >
+        {isLoading ? '考え中...' : 'これにする'}
+      </button>
+      <button
+        className={styles.button}
+        onClick={() => {
+          setQuestion('');
+          fetchInitialMessage();
+        }}
+        disabled={isLoading}
+      >
+        もう一度考え直す
+      </button>
+    </>
+  );
+
   return (
     <div className={styles.chatWrapper}>
       <div className={styles.chatContainer}>
         {isAnswered ? (
           <div className={styles.keywordContainer}>
-            <div className={styles.thinkingCircle}>
-              <div className={styles.responseText}>{keywords[0]}</div>
-              <button
-                className={styles.button}
-                onClick={handleAskQuestion}
-                disabled={isLoading || question.trim() === ''}
-              >
-                {isLoading ? '考え中...' : 'これにする'}
-              </button>
-              <button
-                className={styles.button}
-                onClick={() => {
-                  setQuestion('');
-                  fetchInitialMessage();
-                }}
-                disabled={isLoading}
-              >
-                もう一度考え直す
-              </button>
-            </div>
-            <div className={styles.thinkingCircle}>
-              <div className={styles.responseText}>{keywords[1]}</div>
-              <button
-                className={styles.button}
-                onClick={handleAskQuestion}
-                disabled={isLoading || question.trim() === ''}
-              >
-                {isLoading ? '考え中...' : 'これにする'}
-              </button>
-              <button
-                className={styles.button}
-                onClick={() => {
-                  setQuestion('');
-                  fetchInitialMessage();
-                }}
-                disabled={isLoading}
-              >
-                もう一度考え直す
-              </button>
-            </div>
-            <div className={styles.thinkingCircle}>
-              <div className={styles.responseText}>{keywords[2]}</div>
-              <button
-                className={styles.button}
-                onClick={handleAskQuestion}
-                disabled={isLoading || question.trim() === ''}
-              >
-                {isLoading ? '考え中...' : 'これにする'}
-              </button>
-
-              <button
-                className={styles.button}
-                onClick={() => {
-                  setQuestion('');
-                  fetchInitialMessage();
-                }}
-                disabled={isLoading}
-              >
-                もう一度考え直す
-              </button>
-            </div>
+            {/* キーワードを動的に生成 */}
+            {keywords.map((keyword, index) => (
+              <div className={styles.thinkingCircle} key={index}>
+                <div className={styles.responseText}>{keyword}</div>
+                {renderButtons()}
+              </div>
+            ))}
           </div>
         ) : (
           /* 通常の表示内容 */
@@ -136,23 +101,7 @@ export const ChatComponent = () => {
               placeholder="Ask a question"
               disabled={isLoading}
             />
-            <button
-              className={styles.button}
-              onClick={handleAskQuestion}
-              disabled={isLoading || question.trim() === ''}
-            >
-              {isLoading ? '考え中...' : 'これにする'}
-            </button>
-            <button
-              className={styles.button}
-              onClick={() => {
-                setQuestion('');
-                fetchInitialMessage();
-              }}
-              disabled={isLoading}
-            >
-              考え直す
-            </button>
+            {renderButtons()}
           </div>
         )}
         <div className={styles.thinkingBigCircle} />
