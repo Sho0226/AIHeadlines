@@ -23,11 +23,13 @@ export async function streamChatCompletion(question: string): Promise<string> {
       frequency_penalty: 0.5,
     });
 
+    // チャンクごとにデータを受信して蓄積
     for await (const chunk of stream) {
       responseText += chunk.choices[0]?.delta?.content || '';
     }
 
-    console.log('Final response text:', responseText);
+    console.log('Final response text:', responseText); // 最終的なテキストも表示
+
     return responseText;
   } catch (error) {
     console.error('Error while calling OpenAI API:', error);
