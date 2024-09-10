@@ -61,18 +61,46 @@ export const ChatComponent = () => {
     <div className={styles.chatWrapper}>
       <div className={styles.chatContainer}>
         {isAnswered ? (
-          <div className={styles.thinkingCircle}>
-            <div className={styles.responseText}>{keywords[0]}</div>
-            <button
-              className={styles.button}
-              onClick={() => {
-                setQuestion('');
-                fetchInitialMessage();
-              }}
-              disabled={isLoading}
-            >
-              もう一度考え直す
-            </button>
+          <div className={styles.chatContainer}>
+            <div className={styles.thinkingCircle}>
+              <div className={styles.responseText}>{keywords[0]}</div>
+              <button
+                className={styles.button}
+                onClick={() => {
+                  setQuestion('');
+                  fetchInitialMessage();
+                }}
+                disabled={isLoading}
+              >
+                もう一度考え直す
+              </button>
+            </div>
+            <div className={styles.thinkingCircle}>
+              <div className={styles.responseText}>{keywords[1]}</div>
+              <button
+                className={styles.button}
+                onClick={() => {
+                  setQuestion('');
+                  fetchInitialMessage();
+                }}
+                disabled={isLoading}
+              >
+                もう一度考え直す
+              </button>
+            </div>
+            <div className={styles.thinkingCircle}>
+              <div className={styles.responseText}>{keywords[2]}</div>
+              <button
+                className={styles.button}
+                onClick={() => {
+                  setQuestion('');
+                  fetchInitialMessage();
+                }}
+                disabled={isLoading}
+              >
+                もう一度考え直す
+              </button>
+            </div>
           </div>
         ) : (
           /* 通常の表示内容 */
