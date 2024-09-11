@@ -55,7 +55,7 @@ export const ChatComponent = () => {
     }
   };
 
-  const renderButtons = () => (
+  const renderAnsweredButtons = () => (
     <>
       <button
         className={styles.button}
@@ -77,6 +77,33 @@ export const ChatComponent = () => {
       </button>
     </>
   );
+
+  const renderNonAnsweredButtons = () => (
+    <>
+      <button
+        className={styles.button}
+        onClick={handleAskQuestion}
+        disabled={isLoading || question.trim() === ''}
+      >
+        {isLoading ? '考え中...' : 'もっと詳しく'}
+      </button>
+      <button
+        className={styles.button}
+        onClick={() => {
+          setQuestion('');
+          fetchInitialMessage();
+          setToggleState(1); // 状況に応じて"think"の画像に設定
+        }}
+        disabled={isLoading}
+      >
+        もう一度考え直す
+      </button>
+    </>
+  );
+
+  const renderButtons = () => {
+    return isAnswered ? renderAnsweredButtons() : renderNonAnsweredButtons();
+  };
 
   const getImageName = () => {
     switch (toggleState) {
