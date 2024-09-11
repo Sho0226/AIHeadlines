@@ -31,6 +31,12 @@
   color: #666;
 }
 
+.newsPublishedAt {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #666;
+}
+
 .newsLink {
   display: inline-block;
   margin-top: 10px;

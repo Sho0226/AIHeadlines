@@ -12,7 +12,7 @@ export const NewsComponent = () => {
     const fetchNews = async () => {
       try {
         const res = await apiClient.news.$post({
-          body: { query: 'technology' },
+          body: { query: 'ごはん' },
         });
         console.log('Received response from API:', res.response);
         const newsArticles: Article[] = Array.isArray(res.response) ? res.response : [res.response];

@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
 import styles from './chat.module.css';
 
-export const ChatComponent = () => {
+export const ChatComponent = ({ setKeywords }: { setKeywords: (keywords: string[]) => void }) => {
   const [question, setQuestion] = useState('');
   const [response, setResponse] = useState('どんなニュースが読みたい？');
   const [isLoading, setIsLoading] = useState(false);
   const [isAnswered, setIsAnswered] = useState(false); // 回答済みかどうかの状態
-  const [keywords, setKeywords] = useState<string[]>([]); // 抽出したキーワードを保持するステート
+  const [keywords, setLocalKeywords] = useState<string[]>([]); // 抽出したキーワードを保持するステート
   const [toggleState, setToggleState] = useState(0);
 
   const fetchInitialMessage = async () => {
@@ -44,7 +44,8 @@ export const ChatComponent = () => {
         .map((item: string) => item.trim()) // 各項目の前後の空白を除去
         .filter((item: string) => item !== ''); // 空白行を除外
 
-      setKeywords(extractedKeywords); // キーワードをステートに保存
+      setLocalKeywords(extractedKeywords); // キーワードをステートに保存
+      setKeywords(extractedKeywords);
       setIsAnswered(true); // 回答済みにする
       setToggleState(2); // 画像を"amaze"に変更
     } catch (error) {
