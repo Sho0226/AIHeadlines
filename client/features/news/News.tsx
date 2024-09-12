@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
 import styles from './news.module.css';
 
-export const NewsComponent = () => {
+export const NewsComponent = ({ query }: { query: string }) => {
   const [news, setNews] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -12,7 +12,7 @@ export const NewsComponent = () => {
     const fetchNews = async () => {
       try {
         const res = await apiClient.news.$post({
-          body: { query: 'ジュース' },
+          body: { query },
         });
         console.log('Received response from API:', res.response);
         const newsArticles: Article[] = Array.isArray(res.response) ? res.response : [res.response];
@@ -26,7 +26,7 @@ export const NewsComponent = () => {
     };
 
     fetchNews();
-  }, []);
+  }, [query]);
 
   if (loading) return <p className={styles.loading}>Loading...</p>;
   if (error) return <p className={styles.error}>{error}</p>;

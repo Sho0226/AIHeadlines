@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
 import styles from './chat.module.css';
 
-export const ChatComponent = () => {
+export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) => void }) => {
   const [question, setQuestion] = useState('');
   const [response, setResponse] = useState('どんなニュースが読みたい？');
   const [isLoading, setIsLoading] = useState(false);
@@ -46,6 +46,7 @@ export const ChatComponent = () => {
       console.log(extractedKeywords);
 
       setLocalKeywords(extractedKeywords); // キーワードをステートに保存
+
       setIsAnswered(true); // 回答済みにする
       setToggleState(2); // 画像を"amaze"に変更
     } catch (error) {
@@ -83,9 +84,16 @@ export const ChatComponent = () => {
     }
   };
 
+  const handleNewsCkick = (newsKeyword: string) => {
+    setKeyword(newsKeyword);
+  };
+
   const renderAnsweredButtons = (keyword: string) => (
     <>
-      <button className={styles.button}> {isLoading ? '考え中...' : 'これにする'}</button>
+      <button className={styles.button} onClick={() => handleNewsCkick(keyword)}>
+        {' '}
+        {isLoading ? '考え中...' : 'これにする'}
+      </button>
       <button
         className={styles.button}
         onClick={() => handleKeywordClick(keyword)}
