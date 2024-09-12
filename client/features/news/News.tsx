@@ -26,7 +26,7 @@ export const NewsComponent = ({ query }: { query: string }) => {
     };
 
     fetchNews();
-  }, [query]);
+  }, []);
 
   if (loading) return <p className={styles.loading}>Loading...</p>;
   if (error) return <p className={styles.error}>{error}</p>;
