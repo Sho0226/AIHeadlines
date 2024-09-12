@@ -8,13 +8,15 @@ export async function streamChatCompletion(question: string): Promise<string> {
       return 'どんなニュースが読みたい？';
     }
 
+    // content: 'この質問に関連するキーワードのみを三つ箇条書きで挙げてください。',
+
     const stream = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
         { role: 'user', content: question },
         {
           role: 'assistant',
-          content: 'この質問に関連するキーワードのみを三つ箇条書きで挙げてください。',
+          content: `次のキーワードに関連する単語を3つ提供してください。それぞれの単語をハイフン（-）で区切ってください。キーワード: "${question}" 形式: 単語1 - 単語2 - 単語3。また、一度出た${question}は出力しないでください。`,
         },
       ],
       stream: true,

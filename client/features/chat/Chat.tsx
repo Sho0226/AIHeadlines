@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
 import styles from './chat.module.css';
 
-export const ChatComponent = ({ setKeywords }: { setKeywords: (keywords: string[]) => void }) => {
+export const ChatComponent = () => {
   const [question, setQuestion] = useState('');
   const [response, setResponse] = useState('どんなニュースが読みたい？');
   const [isLoading, setIsLoading] = useState(false);
@@ -43,9 +43,9 @@ export const ChatComponent = ({ setKeywords }: { setKeywords: (keywords: string[
         .split('-') // ハイフンで分割
         .map((item: string) => item.trim()) // 各項目の前後の空白を除去
         .filter((item: string) => item !== ''); // 空白行を除外
+      console.log(extractedKeywords);
 
       setLocalKeywords(extractedKeywords); // キーワードをステートに保存
-      setKeywords(extractedKeywords);
       setIsAnswered(true); // 回答済みにする
       setToggleState(2); // 画像を"amaze"に変更
     } catch (error) {
@@ -56,14 +56,42 @@ export const ChatComponent = ({ setKeywords }: { setKeywords: (keywords: string[
     }
   };
 
-  const renderAnsweredButtons = () => (
+  const handleKeywordClick = async (keyword: string) => {
+    setIsLoading(true);
+    setQuestion(keyword); // 選択されたキーワードをセット
+    try {
+      const res = await apiClient.chat.$post({
+        body: { question: keyword },
+      });
+      setResponse(res.response || 'No response received.');
+      const extractedKeywords = res.response
+        .split('-') // ハイフンで分割
+        .map((item: string) => item.trim()) // 各項目の前後の空白を除去
+        .filter((item: string) => item !== ''); // 空白行を除外
+
+      setIsAnswered(true); // 回答済み
+      setToggleState(3); // "amaze"画像に変更
+      setLocalKeywords(extractedKeywords);
+      console.log('extractedKeywords', extractedKeywords);
+      console.log('keywords', keywords);
+      console.log('keyword', keyword);
+    } catch (error) {
+      console.error('Error:', error);
+      setResponse('An error occurred. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const renderAnsweredButtons = (keyword: string) => (
     <>
+      <button className={styles.button}> {isLoading ? '考え中...' : 'これにする'}</button>
       <button
         className={styles.button}
-        onClick={handleAskQuestion}
-        disabled={isLoading || question.trim() === ''}
+        onClick={() => handleKeywordClick(keyword)}
+        disabled={isLoading || keyword.trim() === ''}
       >
-        {isLoading ? '考え中...' : 'これにする'}
+        {isLoading ? '考え中...' : 'もっと詳しく'}
       </button>
       <button
         className={styles.button}
@@ -86,7 +114,7 @@ export const ChatComponent = ({ setKeywords }: { setKeywords: (keywords: string[
         onClick={handleAskQuestion}
         disabled={isLoading || question.trim() === ''}
       >
-        {isLoading ? '考え中...' : 'もっと詳しく'}
+        {isLoading ? '考え中...' : '詳しく'}
       </button>
       <button
         className={styles.button}
@@ -102,8 +130,8 @@ export const ChatComponent = ({ setKeywords }: { setKeywords: (keywords: string[
     </>
   );
 
-  const renderButtons = () => {
-    return isAnswered ? renderAnsweredButtons() : renderNonAnsweredButtons();
+  const renderButtons = (keyword: string) => {
+    return isAnswered ? renderAnsweredButtons(keyword) : renderNonAnsweredButtons();
   };
 
   const getImageName = () => {
@@ -127,7 +155,7 @@ export const ChatComponent = ({ setKeywords }: { setKeywords: (keywords: string[
             {keywords.map((keyword, index) => (
               <div className={styles.thinkingCircle} key={index}>
                 <div className={styles.responseText}>{keyword}</div>
-                {renderButtons()}
+                {renderButtons(keyword)}
               </div>
             ))}
           </div>
@@ -142,7 +170,7 @@ export const ChatComponent = ({ setKeywords }: { setKeywords: (keywords: string[
               placeholder="Ask a question"
               disabled={isLoading}
             />
-            {renderButtons()}
+            {renderButtons('')}
           </div>
         )}
         <div className={styles.thinkingBigCircle} />
