@@ -106,7 +106,7 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
         onClick={() => {
           setQuestion('');
           fetchInitialMessage();
-          setToggleState(1); // 状況に応じて"think"の画像に設定
+          setToggleState(1);
         }}
         disabled={isLoading}
       >
@@ -129,7 +129,7 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
         onClick={() => {
           setQuestion('');
           fetchInitialMessage();
-          setToggleState(1); // 状況に応じて"think"の画像に設定
+          setToggleState(1);
         }}
         disabled={isLoading}
       >
@@ -145,13 +145,13 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
   const getImageName = () => {
     switch (toggleState) {
       case 0:
-        return 'agree';
-      case 1:
         return 'think';
+      case 1:
+        return 'agree';
       case 2:
         return 'amaze';
       default:
-        return 'agree'; // デフォルト画像を指定
+        return 'agree';
     }
   };
 
@@ -175,7 +175,7 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
               type="text"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              placeholder="Ask a question"
+              placeholder="ニュースの内容"
               disabled={isLoading}
             />
             {renderButtons('')}
