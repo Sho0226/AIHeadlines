@@ -98,9 +98,3 @@
   border: 3.5px solid #1f2937;
   border-radius: 50%;
 }
-
-.image {
-  text-align: center;
-  pointer-events: none;
-  user-select: none;
-}

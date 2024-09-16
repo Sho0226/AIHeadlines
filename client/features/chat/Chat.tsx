@@ -8,7 +8,6 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
   const [isLoading, setIsLoading] = useState(false);
   const [isAnswered, setIsAnswered] = useState(false); // 回答済みかどうかの状態
   const [keywords, setLocalKeywords] = useState<string[]>([]); // 抽出したキーワードを保持するステート
-  const [toggleState, setToggleState] = useState(0);
 
   const fetchInitialMessage = async () => {
     setIsLoading(true);
@@ -23,7 +22,6 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
     } finally {
       setIsLoading(false);
       setIsAnswered(false); // 回答済みをリセット
-      setToggleState(0); // 画像を初期化
     }
   };
 
@@ -48,7 +46,6 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
       setLocalKeywords(extractedKeywords); // キーワードをステートに保存
 
       setIsAnswered(true); // 回答済みにする
-      setToggleState(2); // 画像を"amaze"に変更
     } catch (error) {
       console.error('Error:', error);
       setResponse('An error occurred. Please try again.');
@@ -71,7 +68,6 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
         .filter((item: string) => item !== ''); // 空白行を除外
 
       setIsAnswered(true); // 回答済み
-      setToggleState(3); // "amaze"画像に変更
       setLocalKeywords(extractedKeywords);
       console.log('extractedKeywords', extractedKeywords);
       console.log('keywords', keywords);
@@ -106,7 +102,6 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
         onClick={() => {
           setQuestion('');
           fetchInitialMessage();
-          setToggleState(1);
         }}
         disabled={isLoading}
       >
@@ -129,7 +124,6 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
         onClick={() => {
           setQuestion('');
           fetchInitialMessage();
-          setToggleState(1);
         }}
         disabled={isLoading}
       >
@@ -140,19 +134,6 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
 
   const renderButtons = (keyword: string) => {
     return isAnswered ? renderAnsweredButtons(keyword) : renderNonAnsweredButtons();
-  };
-
-  const getImageName = () => {
-    switch (toggleState) {
-      case 0:
-        return 'think';
-      case 1:
-        return 'agree';
-      case 2:
-        return 'amaze';
-      default:
-        return 'agree';
-    }
   };
 
   return (
@@ -183,9 +164,6 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
         )}
         <div className={styles.thinkingBigCircle} />
         <div className={styles.thinkingSmallCircle} />
-      </div>
-      <div className={styles.image}>
-        <img src={`/images/${getImageName()}.png`} style={{ height: '40vh' }} />
       </div>
     </div>
   );
