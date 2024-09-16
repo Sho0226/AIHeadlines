@@ -149,7 +149,7 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
             ))}
           </div>
         ) : (
-          <div className={styles.thinkingCircle}>
+          <div>
             <div className={styles.responseText}>{response}</div>
             <input
               className={styles.input}
@@ -162,8 +162,6 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
             {renderButtons('')}
           </div>
         )}
-        <div className={styles.thinkingBigCircle} />
-        <div className={styles.thinkingSmallCircle} />
       </div>
     </div>
   );
