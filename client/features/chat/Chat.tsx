@@ -41,7 +41,6 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
         .split('-') // ハイフンで分割
         .map((item: string) => item.trim()) // 各項目の前後の空白を除去
         .filter((item: string) => item !== ''); // 空白行を除外
-      console.log(extractedKeywords);
 
       setLocalKeywords(extractedKeywords); // キーワードをステートに保存
 
@@ -69,9 +68,6 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
 
       setIsAnswered(true); // 回答済み
       setLocalKeywords(extractedKeywords);
-      console.log('extractedKeywords', extractedKeywords);
-      console.log('keywords', keywords);
-      console.log('keyword', keyword);
     } catch (error) {
       console.error('Error:', error);
       setResponse('An error occurred. Please try again.');
