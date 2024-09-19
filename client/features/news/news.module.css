@@ -1,8 +1,12 @@
 .newsContainer {
+  width: 100%;
   max-width: 800px;
   padding: 20px;
-  margin: 0 auto;
-  font-family: Arial, sans-serif;
+  background-color: rgb(255 255 255 / 5%);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgb(0 255 255 / 10%);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgb(0 255 255 / 20%);
 }
 
 .newsList {
@@ -11,51 +15,77 @@
 }
 
 .newsItem {
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgb(0 255 255 / 30%);
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-.newsItem:last-child {
-  border-bottom: none;
+.newsItem:hover {
+  box-shadow: 0 5px 15px rgb(0 255 255 / 20%);
+  transform: translateY(-5px);
 }
 
 .newsTitle {
-  margin: 0;
-  font-size: 1.5em;
-  color: #333;
+  margin: 0 0 10px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #0ff;
+  text-shadow: 0 0 5px rgb(0 255 255 / 50%);
 }
 
-.newsAuthor {
-  margin-top: 5px;
-  font-size: 0.9em;
-  color: #666;
-}
-
+.newsAuthor,
 .newsPublishedAt {
-  margin-top: 5px;
+  margin: 5px 0;
   font-size: 0.9em;
-  color: #666;
+  color: rgb(255 255 255 / 70%);
 }
 
 .newsLink {
+  position: relative;
   display: inline-block;
+  padding: 8px 16px;
   margin-top: 10px;
-  color: #1e90ff;
+  overflow: hidden;
+  color: #000;
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: #0ff;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.newsLink::before {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  content: '';
+  background: rgb(255 255 255 / 20%);
+  transition: all 0.3s ease;
+  transform: rotate(45deg);
+}
+
+.newsLink:hover::before {
+  left: 100%;
 }
 
 .newsLink:hover {
-  text-decoration: underline;
+  background-color: #40ffff;
+  box-shadow: 0 0 10px rgb(0 255 255 / 50%);
 }
 
-.loading {
+.loading,
+.error {
+  padding: 20px;
   font-size: 1.2em;
-  color: #666;
+  color: #fff;
   text-align: center;
 }
 
 .error {
-  font-size: 1.2em;
-  color: red;
-  text-align: center;
+  color: #ff6b6b;
 }

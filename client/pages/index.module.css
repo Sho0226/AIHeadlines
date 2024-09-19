@@ -1,33 +1,78 @@
 .container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
   padding: 40px 16px;
-  background: #f8f8f8;
+  background-color: #000;
+  background-image: radial-gradient(white, rgb(255 255 255 / 20%) 2px, transparent 40px),
+    radial-gradient(white, rgb(255 255 255 / 15%) 1px, transparent 30px),
+    radial-gradient(white, rgb(255 255 255 / 10%) 2px, transparent 40px),
+    radial-gradient(rgb(255 255 255 / 40%), rgb(255 255 255 / 10%) 2px, transparent 30px);
+  background-position:
+    0 0,
+    40px 60px,
+    130px 270px,
+    70px 100px;
+  background-size:
+    550px 550px,
+    350px 350px,
+    250px 250px,
+    150px 150px;
+  animation: backgroundMove 60s linear infinite;
 }
 
-@keyframes gradient {
+@keyframes background-move {
   0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
+    background-position:
+      0 0,
+      40px 60px,
+      130px 270px,
+      70px 100px;
   }
 
   100% {
-    background-position: 0% 50%;
+    background-position:
+      550px 550px,
+      590px 610px,
+      680px 820px,
+      620px 650px;
   }
 }
 
 .title {
-  padding-top: 40px;
-  font-size: 80px;
+  margin-bottom: 40px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 48px;
   font-weight: 900;
-  color: transparent;
+  color: #fff;
   text-align: center;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-clip: text;
-  background-size: 200% 200%;
-  animation: gradient 10s ease infinite;
+  text-shadow: 0 0 10px rgb(255 255 255 / 70%);
+  animation: glowingTitle 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowing-title {
+  from {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff,
+      0 0 20px #0ff,
+      0 0 35px #0ff;
+  }
+
+  to {
+    text-shadow:
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #fff,
+      0 0 40px #0ff,
+      0 0 70px #0ff;
+  }
+}
+
+@media (width <= 768px) {
+  .title {
+    font-size: 36px;
+  }
 }

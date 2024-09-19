@@ -1,28 +1,24 @@
 .chatWrapper {
-  display: inline-table;
-  align-items: center;
-  justify-content: center;
-  background-color: #f8f8f8;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  background-color: rgb(255 255 255 / 5%);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgb(0 255 255 / 10%);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgb(0 255 255 / 20%);
 }
 
 .chatContainer {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 600px;
-  padding: 10px;
-  overflow: hidden;
-  border-radius: 12px;
+  padding: 20px;
 }
 
 .keywordContainer {
-  box-sizing: border-box;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  width: 100%;
-  max-width: 600px;
-  padding: 10px;
-  overflow: hidden;
-  border-radius: 12px;
+  margin-top: 20px;
 }
 
 .input {
@@ -30,49 +26,102 @@
   padding: 12px;
   margin-bottom: 20px;
   font-size: 16px;
-  border: 1px solid #d1d5db;
+  color: #fff;
+  background-color: rgb(255 255 255 / 10%);
+  border: 2px solid rgb(0 255 255 / 30%);
   border-radius: 6px;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .input:focus {
-  border-color: #aaa;
+  border-color: #0ff;
   outline: none;
+  box-shadow: 0 0 15px rgb(0 255 255 / 50%);
 }
 
 .button {
-  width: 100%;
-  padding: 12px;
+  position: relative;
+  padding: 12px 20px;
+  overflow: hidden;
   font-size: 16px;
   font-weight: bold;
-  color: white;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   cursor: pointer;
-  background-color: #aaa;
+  background-color: #0ff;
   border: none;
   border-radius: 6px;
-  transition:
-    background-color 0.3s ease,
-    transform 0.2s ease;
+  transition: all 0.3s ease;
+}
+
+.button::before {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  content: '';
+  background: rgb(255 255 255 / 20%);
+  transition: all 0.3s ease;
+  transform: rotate(45deg);
+}
+
+.button:hover::before {
+  left: 100%;
 }
 
 .button:hover {
-  background-color: #aaabbb;
+  background-color: #40ffff;
+  box-shadow: 0 5px 15px rgb(0 255 255 / 40%);
   transform: translateY(-2px);
 }
 
 .button:active {
-  background-color: #1d4ed8;
+  background-color: #0cc;
   transform: translateY(0);
 }
 
+.button:disabled {
+  cursor: not-allowed;
+  background-color: rgb(255 255 255 / 10%);
+}
+
 .responseText {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  text-align: center;
-  word-break: break-word;
-  word-wrap: break-word;
-  background-color: #f5f5f5;
-  border-radius: 4px;
+  position: relative;
+  padding: 15px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+  background-color: rgb(255 255 255 / 10%);
+  border: 1px solid rgb(0 255 255 / 30%);
+  border-radius: 8px;
+}
+
+.responseText::after {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  content: '';
+  background: linear-gradient(
+    to right,
+    rgb(255 255 255 / 0%) 0%,
+    rgb(255 255 255 / 10%) 50%,
+    rgb(255 255 255 / 0%) 100%
+  );
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
 }

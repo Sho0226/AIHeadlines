@@ -138,7 +138,7 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
         {isAnswered ? (
           <div className={styles.keywordContainer}>
             {keywords.map((keyword, index) => (
-              <div className={styles.thinkingCircle} key={index}>
+              <div key={index}>
                 <div className={styles.responseText}>{keyword}</div>
                 {renderButtons(keyword)}
               </div>
