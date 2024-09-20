@@ -5,7 +5,7 @@ export async function streamChatCompletion(question: string): Promise<string> {
 
   try {
     if (!question) {
-      return 'どんなニュースが読みたい？';
+      return 'ニュースデータのフィールドを選択してください';
     }
 
     // content: 'この質問に関連するキーワードのみを三つ箇条書きで挙げてください。',

@@ -84,14 +84,14 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
     <>
       <button className={styles.button} onClick={() => handleNewsCkick(keyword)}>
         {' '}
-        {isLoading ? '考え中...' : 'これにする'}
+        {isLoading ? 'データを解析中…' : 'データを確定'}
       </button>
       <button
         className={styles.button}
         onClick={() => handleKeywordClick(keyword)}
         disabled={isLoading || keyword.trim() === ''}
       >
-        {isLoading ? '考え中...' : 'もっと詳しく'}
+        {isLoading ? 'データを解析中…' : '詳細を表示'}
       </button>
       <button
         className={styles.button}
@@ -101,7 +101,7 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
         }}
         disabled={isLoading}
       >
-        もう一度考え直す
+        再度選択
       </button>
     </>
   );
@@ -113,7 +113,7 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
         onClick={handleAskQuestion}
         disabled={isLoading || question.trim() === ''}
       >
-        {isLoading ? '考え中...' : '詳しく'}
+        {isLoading ? 'データを解析中…' : '詳細を表示'}
       </button>
       <button
         className={styles.button}
@@ -123,7 +123,7 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
         }}
         disabled={isLoading}
       >
-        もう一度考え直す
+        再度選択
       </button>
     </>
   );
@@ -152,7 +152,7 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
               type="text"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              placeholder="ニュースの内容"
+              placeholder="ニュースデータを指定…"
               disabled={isLoading}
             />
             {renderButtons('')}

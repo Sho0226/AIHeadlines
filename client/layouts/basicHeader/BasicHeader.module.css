@@ -11,7 +11,6 @@
 .main {
   display: flex;
   align-items: center;
-  max-width: 1200px;
   height: 100%;
   padding: 0 24px;
   margin: 0 auto;
