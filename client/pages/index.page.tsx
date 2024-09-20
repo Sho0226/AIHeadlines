@@ -6,12 +6,29 @@ import styles from './index.module.css';
 
 const Home = () => {
   const [keyword, setKeyword] = useState('');
+  const [resetChat, setResetChat] = useState(false);
+
+  const handleResetChat = () => {
+    setKeyword(''); // ニュースを非表示にするためキーワードをクリア
+    setResetChat(true); // チャットリセットフラグをtrueに設定
+  };
   return (
     <Layout
       render={() => (
         <div className={styles.container}>
-          <ChatComponent setKeyword={setKeyword} />
-          {keyword && <NewsComponent query={keyword} />}
+          <ChatComponent
+            setKeyword={setKeyword}
+            resetChat={resetChat}
+            setResetChat={setResetChat}
+          />
+          {keyword && (
+            <div>
+              <NewsComponent query={keyword} />
+              <button onClick={handleResetChat} className={styles.resetButton}>
+                リフレッシュして再開
+              </button>
+            </div>
+          )}
         </div>
       )}
     />

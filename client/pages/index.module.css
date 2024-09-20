@@ -76,3 +76,51 @@
     font-size: 36px;
   }
 }
+
+.resetButton {
+  position: relative;
+  padding: 12px 20px;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  background-color: #0ff;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.resetButton::before {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  content: '';
+  background: rgb(255 255 255 / 20%);
+  transition: all 0.3s ease;
+  transform: rotate(45deg);
+}
+
+.resetButton:hover::before {
+  left: 100%;
+}
+
+.resetButton:hover {
+  background-color: #40ffff;
+  box-shadow: 0 5px 15px rgb(0 255 255 / 40%);
+  transform: translateY(-2px);
+}
+
+.resetButton:active {
+  background-color: #0cc;
+  transform: translateY(0);
+}
+
+.resetButton:disabled {
+  cursor: not-allowed;
+  background-color: rgb(255 255 255 / 10%);
+}

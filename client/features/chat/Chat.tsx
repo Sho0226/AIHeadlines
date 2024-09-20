@@ -2,12 +2,21 @@ import { useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
 import styles from './chat.module.css';
 
-export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) => void }) => {
+export const ChatComponent = ({
+  setKeyword,
+  resetChat,
+  setResetChat,
+}: {
+  setKeyword: (keyword: string) => void;
+  resetChat: boolean;
+  setResetChat: (reset: boolean) => void;
+}) => {
   const [question, setQuestion] = useState('');
   const [response, setResponse] = useState('どんなニュースが読みたい？');
   const [isLoading, setIsLoading] = useState(false);
   const [isAnswered, setIsAnswered] = useState(false); // 回答済みかどうかの状態
   const [keywords, setLocalKeywords] = useState<string[]>([]); // 抽出したキーワードを保持するステート
+  const [isNewsMode, setIsNewsMode] = useState(false);
 
   const fetchInitialMessage = async () => {
     setIsLoading(true);
@@ -26,8 +35,13 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
   };
 
   useEffect(() => {
-    fetchInitialMessage();
-  }, []);
+    // リセットフラグがtrueの場合はチャットをリセット
+    if (resetChat) {
+      fetchInitialMessage();
+      setIsNewsMode(false);
+      setResetChat(false); // リセット後にフラグを戻す
+    }
+  }, [resetChat]);
 
   const handleAskQuestion = async () => {
     setIsLoading(true);
@@ -78,6 +92,7 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
 
   const handleNewsCkick = (newsKeyword: string) => {
     setKeyword(newsKeyword);
+    setIsNewsMode(true);
   };
 
   const renderAnsweredButtons = (keyword: string) => (
@@ -135,28 +150,32 @@ export const ChatComponent = ({ setKeyword }: { setKeyword: (keyword: string) =>
   return (
     <div className={styles.chatWrapper}>
       <div className={styles.chatContainer}>
-        {isAnswered ? (
-          <div className={styles.keywordContainer}>
-            {keywords.map((keyword, index) => (
-              <div key={index}>
-                <div className={styles.responseText}>{keyword}</div>
-                {renderButtons(keyword)}
+        {isNewsMode ? null : ( // ニュースモードの場合はニュースコンポーネントのみを表示 // チャット部分は表示しない
+          <>
+            {isAnswered ? (
+              <div className={styles.keywordContainer}>
+                {keywords.map((keyword, index) => (
+                  <div key={index}>
+                    <div className={styles.responseText}>{keyword}</div>
+                    {renderButtons(keyword)}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        ) : (
-          <div>
-            <div className={styles.responseText}>{response}</div>
-            <input
-              className={styles.input}
-              type="text"
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              placeholder="ニュースデータを指定…"
-              disabled={isLoading}
-            />
-            {renderButtons('')}
-          </div>
+            ) : (
+              <div>
+                <div className={styles.responseText}>{response}</div>
+                <input
+                  className={styles.input}
+                  type="text"
+                  value={question}
+                  onChange={(e) => setQuestion(e.target.value)}
+                  placeholder="ニュースデータを指定…"
+                  disabled={isLoading}
+                />
+                {renderButtons('')}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
