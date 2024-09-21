@@ -1,0 +1,8 @@
+{
+  "selectField": "ニュースデータのフィールドを選択してください",
+  "loading": "データを解析中…",
+  "confirmData": "データを確定",
+  "showDetails": "詳細を表示",
+  "selectAgain": "再度選択",
+  "enterNewsData": "ニュースデータを指定…"
+}

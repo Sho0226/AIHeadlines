@@ -1,0 +1,8 @@
+{
+  "selectField": "Please select a news data field",
+  "loading": "Analyzing data...",
+  "confirmData": "Confirm Data",
+  "showDetails": "Show Details",
+  "selectAgain": "Select Again",
+  "enterNewsData": "Specify news data..."
+}
