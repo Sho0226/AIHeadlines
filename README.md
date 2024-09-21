@@ -10,12 +10,6 @@ AIHeadlinesは、AIを活用してパーソナライズされたニュースを�
 
 ## 🛠️ Technologies
 
-# AIHeadlines 🎉
-
-AIHeadlinesは、AIを活用してパーソナライズされたニュースを提供するアプリケーションです。
-
-## 🛠️ 主要技術スタック
-
 - **フルスタックテンプレート**: aspida と frourio を用いた TypeScript フルスタック
 - **Frontend**: Next.js React
 - **Backend**: Fastify Prisma
