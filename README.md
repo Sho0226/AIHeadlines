@@ -17,8 +17,9 @@ AIHeadlinesは、AIを活用してパーソナライズされたニュースを�
 ## 🛠️ 主要技術スタック
 
 - **フルスタックテンプレート**: aspida と frourio を用いた TypeScript フルスタック
-- **Frontend**: Next.js
-- **Backend**: Fastify
+- **Frontend**: Next.js React
+- **Backend**: Fastify Prisma
+- **Backend**: PostgreSQL
 - **AI**: OpenAI API
 
 ## 🔗 Live Demo
@@ -65,7 +66,7 @@ AIHeadlinesは、AIを活用してパーソナライズされたニュースを�
 5. アプリケーションを起動します。
 
    ```bash
-   npm run start
+   npm run notios
    ```
 
 6. http://localhost:3000 にアクセスして、アプリを確認します。
