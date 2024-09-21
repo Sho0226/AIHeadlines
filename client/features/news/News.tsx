@@ -1,4 +1,5 @@
 import type { Article } from 'common/types/news';
+import Load from 'features/load/Load';
 import { ExternalLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
@@ -29,7 +30,7 @@ export const NewsComponent = ({ query }: { query: string }) => {
     fetchNews();
   }, [query]);
 
-  if (loading) return <p className={styles.loading}>Loading...</p>;
+  if (loading) return <Load />;
   if (error) return <p className={styles.error}>{error}</p>;
 
   return (

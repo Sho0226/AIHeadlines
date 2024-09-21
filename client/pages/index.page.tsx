@@ -12,6 +12,7 @@ const Home = () => {
     setKeyword(''); // ニュースを非表示にするためキーワードをクリア
     setResetChat(true); // チャットリセットフラグをtrueに設定
   };
+
   return (
     <Layout
       render={() => (

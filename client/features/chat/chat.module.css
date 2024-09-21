@@ -128,3 +128,10 @@
     transform: translateX(100%) rotate(45deg);
   }
 }
+
+.loading {
+  padding: 20px;
+  font-size: 1.2em;
+  color: #fff;
+  text-align: center;
+}

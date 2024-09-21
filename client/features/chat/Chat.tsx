@@ -1,5 +1,7 @@
+import {} from 'features/load/Load';
 import { useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
+import Load from '../load/Load'; // 正しいパスで Load コンポーネントをインポート
 import styles from './chat.module.css';
 
 export const ChatComponent = ({
@@ -20,6 +22,8 @@ export const ChatComponent = ({
 
   const fetchInitialMessage = async () => {
     setIsLoading(true);
+    setQuestion(''); // questionをリセット
+    setResponse('ニュースデータのフィールドを選択してください'); // responseをリセット
     try {
       const res = await apiClient.chat.$post({
         body: { question: '' },
@@ -146,6 +150,8 @@ export const ChatComponent = ({
   const renderButtons = (keyword: string) => {
     return isAnswered ? renderAnsweredButtons(keyword) : renderNonAnsweredButtons();
   };
+
+  if (isLoading) return <Load />;
 
   return (
     <div className={styles.chatWrapper}>
