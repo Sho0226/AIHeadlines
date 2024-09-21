@@ -33,7 +33,7 @@ export const NewsComponent = ({ query }: { query: string }) => {
 
   return (
     <div className={styles.newsContainer}>
-      <h1>Latest News</h1>
+      <h1>News Highlights</h1>
       <ul className={styles.newsList}>
         {news.map((article, index) => (
           <li key={index} className={styles.newsItem}>
