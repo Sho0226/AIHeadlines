@@ -22,7 +22,7 @@ const Home = () => {
             setResetChat={setResetChat}
           />
           {keyword && (
-            <div>
+            <div className={styles.mixContainer}>
               <NewsComponent query={keyword} />
               <button onClick={handleResetChat} className={styles.resetButton}>
                 リフレッシュして再開

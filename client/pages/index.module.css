@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: auto;
   min-height: 100vh;
   padding: 40px 16px;
   background-color: #000;
@@ -38,6 +39,10 @@
       680px 820px,
       620px 650px;
   }
+}
+
+.mixContainer {
+  display: grid;
 }
 
 .title {

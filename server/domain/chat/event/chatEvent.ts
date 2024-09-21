@@ -8,7 +8,7 @@ export async function streamChatCompletion(question: string): Promise<string> {
       return 'ニュースデータのフィールドを選択してください';
     }
 
-    // content: 'この質問に関連するキーワードのみを4つ箇条書きで挙げてください。',
+    // content: 'この質問に関連するキーワードのみを8つ箇条書きで挙げてください。',
 
     const stream = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
@@ -16,7 +16,7 @@ export async function streamChatCompletion(question: string): Promise<string> {
         { role: 'user', content: question },
         {
           role: 'assistant',
-          content: `次のキーワードに関連する単語を6つ提供してください。それぞれの単語をハイフン（-）で区切ってください。キーワード: "${question}" 形式: 単語1 - 単語2 - 単語3。また、一度出た${question}は出力しないでください。`,
+          content: `次のキーワードに関連する単語を8つ提供してください。それぞれの単語をハイフン（-）で区切ってください。キーワード: "${question}" 形式: 単語1 - 単語2 - 単語3。また、一度出た${question}は出力しないでください。`,
         },
       ],
       stream: true,
