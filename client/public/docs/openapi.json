@@ -125,18 +125,10 @@
                           },
                           "urlToImage": {
                             "type": "string"
-                          },
-                          "content": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
                           }
                         },
                         "required": [
                           "author",
-                          "content",
-                          "description",
                           "publishedAt",
                           "title",
                           "url",
