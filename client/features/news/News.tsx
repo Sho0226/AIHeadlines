@@ -1,4 +1,5 @@
 import type { Article } from 'common/types/news';
+import { ExternalLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
 import styles from './news.module.css';
@@ -33,13 +34,22 @@ export const NewsComponent = ({ query }: { query: string }) => {
 
   return (
     <div className={styles.newsContainer}>
-      <h1>News Highlights</h1>
+      <div className={styles.highlights}>
+        <h1>News Highlights</h1>
+      </div>
       <ul className={styles.newsList}>
         {news.map((article, index) => (
           <li key={index} className={styles.newsItem}>
+            <img
+              src={article.urlToImage || '/placeholder.svg?height=200&width=300'}
+              alt={article.title}
+              className={styles.newsImage}
+            />
+            <h2 className={styles.newsTitle}>{article.title}</h2>
             <p className={styles.newsAuthor}>{article.author}</p>
-            <p className={styles.newsAuthor}>{article.title}</p>
-            <p className={styles.newsAuthor}>{article.publishedAt}</p>
+            <p className={styles.newsPublishedAt}>
+              {new Date(article.publishedAt).toLocaleDateString()}
+            </p>
             <a
               href={article.url}
               target="_blank"
@@ -47,6 +57,7 @@ export const NewsComponent = ({ query }: { query: string }) => {
               className={styles.newsLink}
             >
               Read more
+              <ExternalLink className={styles.linkIcon} />
             </a>
           </li>
         ))}

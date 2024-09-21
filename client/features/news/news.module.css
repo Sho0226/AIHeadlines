@@ -9,13 +9,17 @@
   box-shadow: 0 0 20px rgb(0 255 255 / 20%);
 }
 
+.highlights {
+  margin-bottom: 15px;
+}
+
 .newsList {
   padding: 0;
   list-style-type: none;
 }
 
 .newsItem {
-  padding: 20px;
+  padding: 30px;
   margin-bottom: 20px;
   border: 1px solid rgb(0 255 255 / 30%);
   border-radius: 8px;
@@ -92,4 +96,18 @@
 
 .newsContainer h1 {
   color: #0ff;
+}
+
+.newsImage {
+  width: 100%;
+  margin-bottom: 10px;
+  object-fit: cover;
+  border: 2px solid rgb(0 255 255 / 30%);
+  border-radius: 8px;
+}
+
+.linkIcon {
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
 }
