@@ -19,7 +19,7 @@ AIHeadlinesは、AIを活用してパーソナライズされたニュースを�
 - **フルスタックテンプレート**: aspida と frourio を用いた TypeScript フルスタック
 - **Frontend**: Next.js React
 - **Backend**: Fastify Prisma
-- **Backend**: PostgreSQL
+- **Database**: PostgreSQL
 - **AI**: OpenAI API
 
 ## 🔗 Live Demo
