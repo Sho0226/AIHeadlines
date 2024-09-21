@@ -1,8 +1,6 @@
-# AIHeadlines 🎉
+# AIHeadlines 🎉 [![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://aiheadlines.onrender.com/)
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://aiheadlines.onrender.com/)
-
-**AIHeadlines**は、AIを活用してパーソナライズされたニュースを提供するアプリケーションです。キーワード検索や、ユーザーの好みに合わせたニュースのおすすめ機能を備えています。
+AIHeadlinesは、AIを活用してパーソナライズされたニュースを提供するアプリケーションです。キーワード検索や、ユーザーの好みに合わせたニュースのおすすめ機能を備えています。
 
 ## 🚀 Features
 
@@ -12,8 +10,15 @@
 
 ## 🛠️ Technologies
 
-- **Frontend**: React, TypeScript
-- **Backend**: Node.js, Express
+# AIHeadlines 🎉
+
+AIHeadlinesは、AIを活用してパーソナライズされたニュースを提供するアプリケーションです。
+
+## 🛠️ 主要技術スタック
+
+- **フルスタックテンプレート**: aspida と frourio を用いた TypeScript フルスタック
+- **Frontend**: Next.js
+- **Backend**: Fastify
 - **AI**: OpenAI API
 
 ## 🔗 Live Demo
@@ -31,36 +36,40 @@
 
 2. 必要な依存関係をインストールします。
 
-   ```npm install
+   ```bash
+   npm install
    npm install --prefix client
    npm install --prefix server
    ```
 
 3. .envファイルを作成し、APIキーや環境設定を入力します。
 
-   ```cp client/.env.example client/.env
+   ```bash
+   cp client/.env.example client/.env
    cp server/.env.example server/.env
    ```
 
-server/.env ファイルに以下の変数を設定します。
+   server/.env ファイルに以下の変数を設定します。
 
-```OPENAI_API_KEY=your_openai_api_key
-BASE_URL=your_base_url
-```
+   ```
+   OPENAI_API_KEY=your_openai_api_key
+   BASE_URL=your_base_url
+   ```
 
 4. Docker Compose を使用してプロジェクトを起動します。
 
-```docker compose up -d
+   ```bash
+   docker compose up -d
+   ```
 
-```
+5. アプリケーションを起動します。
 
-5. docker compose up -d
-
-```npm run notios
-
-```
+   ```bash
+   npm run start
+   ```
 
 6. http://localhost:3000 にアクセスして、アプリを確認します。
 
-📝 License
+## 📝 License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
