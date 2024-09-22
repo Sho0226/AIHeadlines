@@ -3,7 +3,7 @@ import { NEWS_KEY } from 'service/envValues';
 
 export async function fetchTopHeadlines(query: string): Promise<Article[]> {
   try {
-    const pageSize = 3; // ページあたりのニュース数
+    const pageSize = 3;
     console.log(`キーワード "${query}" でニュースを取得中...`);
 
     // キーワード検索のみを行うURL
@@ -20,7 +20,6 @@ export async function fetchTopHeadlines(query: string): Promise<Article[]> {
     const data = await response.json();
     console.log('取得したデータ:', data);
 
-    // 記事が存在しない場合の処理
     if (!data.articles || data.articles.length === 0) {
       console.warn('指定されたクエリに該当する記事が見つかりません。');
       return [];

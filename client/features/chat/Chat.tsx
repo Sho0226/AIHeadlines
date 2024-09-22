@@ -1,7 +1,7 @@
 import {} from 'features/load/Load';
 import { useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
-import Load from '../load/Load'; // 正しいパスで Load コンポーネントをインポート
+import Load from '../load/Load';
 import styles from './chat.module.css';
 
 export const ChatComponent = ({

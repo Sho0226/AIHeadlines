@@ -8,8 +8,6 @@ export async function streamChatCompletion(question: string): Promise<string> {
       return 'ニュースデータのフィールドを選択してください';
     }
 
-    // content: 'この質問に関連するキーワードのみを8つ箇条書きで挙げてください。',
-
     const stream = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [

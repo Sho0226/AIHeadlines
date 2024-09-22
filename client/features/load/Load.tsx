@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import styles from './loading.module.css'; // スタイルも正しいパスでインポート
+import styles from './loading.module.css';
 
 export default function Load() {
-  // コンポーネント名を変更
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
