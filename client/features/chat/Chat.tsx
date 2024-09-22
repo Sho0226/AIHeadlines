@@ -140,7 +140,7 @@ export const ChatComponent = ({
           setQuestion('');
           fetchInitialMessage();
         }}
-        disabled={isLoading}
+        disabled={isLoading || question.trim() === ''}
       >
         再度選択
       </button>
