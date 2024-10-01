@@ -9,30 +9,24 @@ const Home = () => {
   const [resetChat, setResetChat] = useState(false);
 
   const handleResetChat = () => {
-    setKeyword(''); // ニュースを非表示にするためキーワードをクリア
-    setResetChat(true); // チャットリセットフラグをtrueに設定
+    setKeyword('');
+    setResetChat(true);
   };
 
   return (
-    <Layout
-      render={() => (
-        <div className={styles.container}>
-          <ChatComponent
-            setKeyword={setKeyword}
-            resetChat={resetChat}
-            setResetChat={setResetChat}
-          />
-          {keyword && (
-            <div className={styles.mixContainer}>
-              <NewsComponent query={keyword} />
-              <button onClick={handleResetChat} className={styles.resetButton}>
-                リフレッシュして再開
-              </button>
-            </div>
-          )}
-        </div>
-      )}
-    />
+    <Layout>
+      <div className={styles.container}>
+        <ChatComponent setKeyword={setKeyword} resetChat={resetChat} setResetChat={setResetChat} />
+        {keyword && (
+          <div className={styles.mixContainer}>
+            <NewsComponent query={keyword} />
+            <button onClick={handleResetChat} className={styles.resetButton}>
+              リフレッシュして再開
+            </button>
+          </div>
+        )}
+      </div>
+    </Layout>
   );
 };
 
