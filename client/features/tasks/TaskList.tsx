@@ -1,7 +1,6 @@
 import useAspidaSWR from '@aspida/swr';
 import type { TaskDto } from 'common/types/task';
 import { labelValidator } from 'common/validators/task';
-import { Loading } from 'components/loading/Loading';
 import { useAlert } from 'hooks/useAlert';
 import type { FormEvent } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -59,7 +58,7 @@ export const TaskList = () => {
     return () => URL.revokeObjectURL(previewImageUrl);
   }, [previewImageUrl]);
 
-  if (!tasks) return <Loading visible />;
+  if (!tasks) return;
 
   return (
     <div className={styles.main}>
