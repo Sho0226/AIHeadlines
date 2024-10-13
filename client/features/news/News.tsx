@@ -1,34 +1,10 @@
-import type { Article } from 'common/types/news';
 import Load from 'features/load/Load';
+import { useNews } from 'hooks/useNews';
 import { ExternalLink } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { apiClient } from 'utils/apiClient';
 import styles from './news.module.css';
 
-export const NewsComponent = ({ query }: { query: string }) => {
-  const [news, setNews] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const res = await apiClient.news.$post({
-          body: { query },
-        });
-        console.log('Received response from API:', res.response);
-        const newsArticles: Article[] = Array.isArray(res.response) ? res.response : [res.response];
-        setNews(newsArticles || []);
-      } catch (error) {
-        console.error('Error:', error);
-        setError('An error occurred. Please try again.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNews();
-  }, [query]);
+export const News = ({ query }: { query: string }) => {
+  const { news, loading, error } = useNews({ query });
 
   if (loading) return <Load />;
   if (error) return <p className={styles.error}>{error}</p>;

@@ -1,5 +1,5 @@
 import { ChatComponent } from 'features/chat/Chat';
-import { NewsComponent } from 'features/news/News';
+import { News } from 'features/news/News';
 import { Layout } from 'layouts/Layout';
 import { useState } from 'react';
 import styles from './index.module.css';
@@ -19,7 +19,7 @@ const Home = () => {
         <ChatComponent setKeyword={setKeyword} resetChat={resetChat} setResetChat={setResetChat} />
         {keyword && (
           <div className={styles.mixContainer}>
-            <NewsComponent query={keyword} />
+            <News query={keyword} />
             <button onClick={handleResetChat} className={styles.resetButton}>
               リフレッシュして再開
             </button>
