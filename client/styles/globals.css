@@ -1,19 +1,3 @@
-/* SAOUI-Bold */
-@font-face {
-  font-family: SAOUI-Bold;
-  font-style: normal;
-  font-weight: bold;
-  src: url('/fonts/SAOUI-Bold.otf') format('opentype');
-}
-
-/* SAOUI-Regular */
-@font-face {
-  font-family: SAOUI-Regular;
-  font-style: normal;
-  font-weight: normal;
-  src: url('/fonts/SAOUI-Regular.otf') format('opentype');
-}
-
 /* SAOUITT-Bold */
 @font-face {
   font-family: SAOUITT-Bold;
@@ -22,28 +6,12 @@
   src: url('/fonts/SAOUITT-Bold.ttf') format('truetype');
 }
 
-/* SAOUITT-Regular */
-@font-face {
-  font-family: SAOUITT-Regular;
-  font-style: normal;
-  font-weight: normal;
-  src: url('/fonts/SAOUITT-Regular.ttf') format('truetype');
-}
-
 /* SAOWelcome-Bold */
 @font-face {
   font-family: SAOWelcome-Bold;
   font-style: normal;
   font-weight: bold;
   src: url('/fonts/SAOWelcome-Bold.otf') format('opentype');
-}
-
-/* SAOWelcome-Regular */
-@font-face {
-  font-family: SAOWelcome-Regular;
-  font-style: normal;
-  font-weight: normal;
-  src: url('/fonts/SAOWelcome-Regular.otf') format('opentype');
 }
 
 /* SAOWelcomeTT-Bold */
@@ -62,7 +30,6 @@
   src: url('/fonts/SAOWelcomeTT-Regular.ttf') format('truetype');
 }
 
-/* 全体のフォント適用 */
 html,
 body {
   font-family: SAOUI-Regular, SAOUI-Bold, SAOUITT-Regular, SAOWelcome-Regular, sans-serif;
