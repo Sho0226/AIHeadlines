@@ -1,4 +1,4 @@
-import { ChatComponent } from 'features/chat/Chat';
+import { Chat } from 'features/chat/Chat';
 import { News } from 'features/news/News';
 import { Layout } from 'layouts/Layout';
 import { useState } from 'react';
@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <Layout>
       <div className={styles.container}>
-        <ChatComponent setKeyword={setKeyword} resetChat={resetChat} setResetChat={setResetChat} />
+        <Chat setKeyword={setKeyword} resetChat={resetChat} setResetChat={setResetChat} />
         {keyword && (
           <div className={styles.mixContainer}>
             <News query={keyword} />
