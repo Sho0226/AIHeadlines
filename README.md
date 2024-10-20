@@ -49,6 +49,7 @@ AIHeadlinesは、AIを活用してパーソナライズされたニュースを�
    ```
    OPENAI_API_KEY=your_openai_api_key
    BASE_URL=your_base_url
+   NEWS_KEY=your_news_api_key
    ```
 
 4. Docker Compose を使用してプロジェクトを起動します。
