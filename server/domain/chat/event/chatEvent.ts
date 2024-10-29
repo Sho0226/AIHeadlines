@@ -18,7 +18,7 @@ export async function streamChatCompletion(question: string): Promise<string> {
         },
         {
           role: 'user',
-          content: `キーワード「${question}」の内容を具体的に掘り下げた8つの単語を提供してください。`,
+          content: `キーワード「${question}」の内容を具体的に掘り下げた8つの単語を提供してください。${question}は提供しないでください。`,
         },
         {
           role: 'assistant',
