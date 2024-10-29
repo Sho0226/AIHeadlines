@@ -11,16 +11,26 @@ export async function streamChatCompletion(question: string): Promise<string> {
     const stream = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'user', content: question },
+        {
+          role: 'system',
+          content:
+            '関連キーワードを生成する専門家として、明確で関連性の高い単語を提供してください。',
+        },
+        {
+          role: 'user',
+          content: `キーワード「${question}」の内容を具体的に掘り下げた8つの単語を提供してください。`,
+        },
         {
           role: 'assistant',
-          content: `次のキーワードに関連する単語を8つ提供してください。それぞれの単語をハイフン（-）で区切ってください。キーワード: "${question}" 形式: 単語1 - 単語2 - 単語3。また、一度出た${question}は出力しないでください。`,
+          content:
+            '以下の形式で出力します：\n単語1 - 単語2 - 単語3 - 単語4 - 単語5 - 単語6 - 単語7 - 単語8',
         },
       ],
       stream: true,
-      max_tokens: 100,
-      temperature: 0.7,
-      frequency_penalty: 0.5,
+      max_tokens: 150,
+      temperature: 0.3,
+      presence_penalty: 0.1,
+      frequency_penalty: 0.3,
     });
 
     // チャンクごとにデータを受信して蓄積
