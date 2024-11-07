@@ -12,7 +12,6 @@ export const useNews = ({ query }: { query: string }) => {
       const res = await apiClient.news.$post({
         body: { query },
       });
-      console.log('Received response from API:', res.response);
       const newsArticles: Article[] = Array.isArray(res.response) ? res.response : [res.response];
       setNews(newsArticles || []);
     } catch (error) {
