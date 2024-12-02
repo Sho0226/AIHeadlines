@@ -5,6 +5,5 @@ export interface NewsProps {
 export interface ChatProps {
   setKeyword: (keyword: string) => void;
   resetChat: boolean;
-
   setResetChat: (reset: boolean) => void;
 }
