@@ -1,16 +1,9 @@
 import styles from 'features/chat/chat.module.css';
 import { useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
+import type { ChatProps } from 'utils/types';
 
-export const useChat = ({
-  setKeyword,
-  resetChat,
-  setResetChat,
-}: {
-  setKeyword: (keyword: string) => void;
-  resetChat: boolean;
-  setResetChat: (reset: boolean) => void;
-}) => {
+export const useChat = ({ setKeyword, resetChat, setResetChat }: ChatProps) => {
   const [question, setQuestion] = useState(''); // 質問の状態
   const [response, setResponse] = useState('ニュースデータのフィールドを選択してください'); // レスポンスの状態
   const [isLoading, setIsLoading] = useState(false); // ローディング状態

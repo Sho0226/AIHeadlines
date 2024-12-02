@@ -1,8 +1,9 @@
 import type { Article } from 'common/types/news';
 import { useCallback, useEffect, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
+import type { NewsProps } from 'utils/types';
 
-export const useNews = ({ query }: { query: string }) => {
+export const useNews = ({ query }: NewsProps) => {
   const [news, setNews] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

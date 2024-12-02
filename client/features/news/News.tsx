@@ -1,9 +1,11 @@
 import Load from 'features/load/Load';
 import { useNews } from 'hooks/useNews';
 import { ExternalLink } from 'lucide-react';
+import React from 'react';
+import type { NewsProps } from 'utils/types';
 import styles from './news.module.css';
 
-export const News = ({ query }: { query: string }) => {
+export const News: React.FC<NewsProps> = ({ query }) => {
   const { news, loading, error } = useNews({ query });
 
   if (loading) return <Load />;

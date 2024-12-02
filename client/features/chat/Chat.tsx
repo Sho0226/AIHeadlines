@@ -1,16 +1,9 @@
 import Load from 'features/load/Load';
 import { useChat } from 'hooks/useChat';
+import type { ChatProps } from 'utils/types';
 import styles from './chat.module.css';
 
-export const Chat = ({
-  setKeyword,
-  resetChat,
-  setResetChat,
-}: {
-  setKeyword: (keyword: string) => void;
-  resetChat: boolean;
-  setResetChat: (reset: boolean) => void;
-}) => {
+export const Chat: React.FC<ChatProps> = ({ setKeyword, resetChat, setResetChat }) => {
   const {
     isNewsMode,
     keywords,
