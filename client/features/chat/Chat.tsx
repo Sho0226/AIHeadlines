@@ -1,5 +1,6 @@
 import Load from 'features/load/Load';
 import { useChat } from 'hooks/useChat';
+import React from 'react';
 import type { ChatProps } from 'utils/types';
 import styles from './chat.module.css';
 
